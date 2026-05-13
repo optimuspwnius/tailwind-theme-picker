@@ -81,3 +81,4 @@ If you previously had `app/javascript/controllers/theme_controller.js`, delete i
 | `theme_cookie`   | `"theme"`                    |       |
 | `mode_cookie`    | `"mode"`                     |       |
 | `cookie_max_age` | one year                     | Seconds. |
+

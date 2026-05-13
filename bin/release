@@ -6,8 +6,10 @@ TAG="v${VERSION}"
 
 echo "Releasing tailwind_theme_picker ${TAG}"
 
-echo "Running tests..."
-bundle exec rake test
+if [ -d test ] || [ -d spec ]; then
+  echo "Running tests..."
+  bundle exec rake test
+fi
 
 if ! git diff --quiet || ! git diff --cached --quiet; then
   echo "Committing all changes..."
