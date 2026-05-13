@@ -1,0 +1,15 @@
+.fixed.top-2.right-2.z-50.flex.flex-col.items-end.gap-2 data-controller="theme" data-theme-themes-value=themes data-theme-default-theme-value=default data-theme-theme-value="" data-theme-theme-cookie-value=theme_cookie data-theme-mode-cookie-value=mode_cookie data-theme-cookie-max-age-value=cookie_max_age
+
+  button.flex-center.w-8.aspect-square.border.border-base.rounded.btn-primary.text-fg.text-lg.cursor-pointer type="button" data-action="theme#togglePanel" data-theme-target="toggle" data-icon=icons[:times].to_s.gsub('"', "'")
+
+    = icons[:palette]
+
+  .flex.flex-row.items-end.flex-wrap.hidden.bg-surface.backdrop-blur-sm.rounded.p-2.shadow-lg.border.border-base.overflow-hidden data-theme-target="panel"
+
+    - themes.each do |name|
+
+      button.relative.flex-center.w-8.aspect-square.bg-primary/85.cursor-pointer class="theme-#{ name }" type="button" data-action="mouseenter->theme#preview mouseleave->theme#cancelPreview theme#choose" data-theme-name=name
+
+    button.flex-center.justify-center.w-8.aspect-square.border.border-base.rounded.btn-primary.text-sm.cursor-pointer.text-yellow-500.ml-2 class="text-shadow-[0px_0px_3px_black]" type="button" data-action="theme#toggleMode" data-theme-target="mode" data-icon=icons[:moon].to_s.gsub('"', "'")
+
+      = icons[:sun]
