@@ -38,9 +38,9 @@ module TailwindThemePicker
         say "  1. Add to your Tailwind input CSS (e.g. app/assets/tailwind/application.css):"
         say "       @import './tailwind_theme_picker/themes';", :cyan
         say "  2. Wire up your layout <html> tag and body:"
-        say "       html lang=\"en\" *theme_picker_html_attrs", :cyan
-        say "       = theme_picker_fouc_script   # in <head>"
-        say "       = render_theme_picker        # in <body>"
+        say "       html lang=\"en\" *tailwind_theme_picker_html_attrs", :cyan
+        say "       = tailwind_theme_picker_fouc_script   # in <head>"
+        say "       = render_tailwind_theme_picker        # in <body>"
         say ""
         say "After upgrading the gem, re-run this generator to pick up any new themes."
       end

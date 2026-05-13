@@ -3,7 +3,7 @@ module TailwindThemePicker
   module ViewHelper
 
     # Emoji defaults so the gem has no icon-library dependency. Override by
-    # passing :icons to render_theme_picker.
+    # passing :icons to render_tailwind_theme_picker.
     DEFAULT_ICONS = {
       palette: "🎨",
       times:   "❌",
@@ -12,8 +12,8 @@ module TailwindThemePicker
     }.freeze
 
     # Returns HTML attributes for the <html> tag based on the request's cookies.
-    # Use like: html lang="en" *theme_picker_html_attrs
-    def theme_picker_html_attrs
+    # Use like: html lang="en" *tailwind_theme_picker_html_attrs
+    def tailwind_theme_picker_html_attrs
       config = TailwindThemePicker.configuration
       theme  = cookies[config.theme_cookie].presence
       theme  = config.default unless config.themes.include?(theme)
@@ -25,7 +25,7 @@ module TailwindThemePicker
 
     # Whether the current request already has theme cookies set. Useful for
     # skipping the FOUC fallback script.
-    def theme_picker_cookies_present?
+    def tailwind_theme_picker_cookies_present?
       config = TailwindThemePicker.configuration
       cookies[config.theme_cookie].present? && cookies[config.mode_cookie].present?
     end
@@ -33,8 +33,8 @@ module TailwindThemePicker
     # Inline <script> that paints theme + mode classes from cookies/localStorage
     # before the rest of the page renders. Only needed on the first visit (when
     # the cookies aren't yet set server-side) — pass force: true to always emit.
-    def theme_picker_fouc_script(force: false)
-      return "".html_safe if !force && theme_picker_cookies_present?
+    def tailwind_theme_picker_fouc_script(force: false)
+      return "".html_safe if !force && tailwind_theme_picker_cookies_present?
 
       config = TailwindThemePicker.configuration
       nonce  = (respond_to?(:content_security_policy_nonce) ? content_security_policy_nonce : nil)
@@ -53,7 +53,7 @@ module TailwindThemePicker
       content_tag(:script, js.html_safe, nonce: nonce)
     end
 
-    def render_theme_picker(themes: nil, default: nil, icons: {})
+    def render_tailwind_theme_picker(themes: nil, default: nil, icons: {})
       config = TailwindThemePicker.configuration
       render(
         partial: "tailwind_theme_picker/picker",

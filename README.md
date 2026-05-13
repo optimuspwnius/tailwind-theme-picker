@@ -14,7 +14,7 @@ Drop-in theme + light/dark picker for Tailwind-based Rails apps.
 
 ```ruby
 # Gemfile
-gem "tailwind_theme_picker", path: "../theme_picker"  # or git: / version once published
+gem "tailwind_theme_picker"
 ```
 
 ```bash
@@ -38,12 +38,12 @@ end
 ### Wire up the layout
 
 ```slim
-html lang="en" *theme_picker_html_attrs
+html lang="en" *tailwind_theme_picker_html_attrs
   head
     / ...stylesheets, importmap...
-    = theme_picker_fouc_script
+    = tailwind_theme_picker_fouc_script
   body
-    = render_theme_picker
+    = render_tailwind_theme_picker
     = yield
 ```
 
@@ -69,8 +69,8 @@ If you previously had `app/javascript/controllers/theme_controller.js`, delete i
 ## How persistence works
 
 1. Stimulus controller writes both cookies on every change.
-2. On the next request, `theme_picker_html_attrs` reads them and paints `<html>` server-side. No FOUC.
-3. On the user's *first* visit (no cookies), `theme_picker_fouc_script` emits ~250 bytes of inline JS that paints from localStorage or system preference. After that, cookies take over and the helper returns an empty string.
+2. On the next request, `tailwind_theme_picker_html_attrs` reads them and paints `<html>` server-side. No FOUC.
+3. On the user's *first* visit (no cookies), `tailwind_theme_picker_fouc_script` emits ~250 bytes of inline JS that paints from localStorage or system preference. After that, cookies take over and the helper returns an empty string.
 
 ## Configuration reference
 
