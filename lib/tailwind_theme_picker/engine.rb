@@ -1,3 +1,5 @@
+require_relative "../../app/helpers/tailwind_theme_picker/view_helper"
+
 module TailwindThemePicker
 
   class Engine < ::Rails::Engine
